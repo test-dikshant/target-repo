@@ -2,7 +2,7 @@ name: Second Workflow
 
 on:
   workflow_run:
-    workflows: ["Hello World Workflow"]
+    workflows: [Hello World Workflow]
     types:
       - completed
 
