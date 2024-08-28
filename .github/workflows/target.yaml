@@ -7,7 +7,6 @@ on:
 jobs:
   triggered-job:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: Run after first workflow
         run: echo "Triggered by First Workflow completion"
