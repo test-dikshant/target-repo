@@ -1,10 +1,8 @@
 name: Second Workflow
 
 on:
-  workflow_run:
-    workflows: [trigger-grafana]
-    types:
-      - completed
+  repository_dispatch:
+    types: [trigger-grafana]
 
 jobs:
   triggered-job:
