@@ -5,8 +5,4 @@ on:
     types: [trigger-grafana]
 
 jobs:
-  triggered-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run after first workflow
-        run: echo "Triggered by First Workflow completion"
+  triggered-sddfgffg
