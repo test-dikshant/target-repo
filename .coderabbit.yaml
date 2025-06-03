@@ -1,0 +1,91 @@
+early_access: true
+reviews:
+  profile: chill
+  request_changes_workflow: true
+  poem: false
+  changed_files_summary: true
+  review_status: true
+  collapse_walkthrough: false
+  auto_title_instructions: "Try to use alliterations and rhymes in the title as much as possible."
+  labeling_instructions:
+    - label: "coderabbit"
+      instructions: "Apply if this PR contains changes to `.coderabbit.yaml`."
+  path_filters:
+    - "!**/*.xml"
+  path_instructions:
+    - path: "**/*.{js,ts}"
+      instructions: "Ensure that all constant variables are defined using UPPER CASE letters"
+    - path: "tests/**/*"
+      instructions:
+        "Assess the unit test code employing the Mocha testing framework.
+        Confirm that: - The tests adhere to Mocha's established best practices.
+        - Test descriptions are sufficiently detailed to clarify the purpose of
+        each test."
+    - path: "**/*.cpp"
+      instructions: |
+        'This coding style is based on the Emacs style. These instructions are very important, make sure the code follows them closely:
+        - Use spaces, not tabs, for indentation in 2 space increments.
+        - Avoid spaces between parentheses and control flow keywords.
+        - For do/while loops, put loop keywords and braces on their own lines.'
+    - path: "**/*.cpp"
+      instructions: |
+        'This coding style is based on the Emacs style. These instructions are very important, make sure the code follows them closely:
+        - Use parentheses around compound statements with binary logical operators.
+        - Always use curly braces with control statements.
+        - Place opening braces on the next line with a 2 space indent for block braces, or on their own line for function body braces.'
+    - path: "**/*.cpp"
+      instructions: |
+        'This coding style is based on the Emacs style. These instructions are very important, make sure the code follows them closely:
+        - Use explicit names that clarify purpose.
+        - Constants use UPPERCASE_SNAKE_CASE.
+        - Global mutable variables use PascalCase. Other variables use camelCase.
+        - Plural names for lists/containers. Single letter names only for loop indexes like "i".
+        - Classes and enum types use camelCase.
+        - Enum variants use PascalCase.
+        - Functions use camelCase, usually with a verb.
+        - Avoid "get" for simple data retrieval (use member name). "set" is used for setters. Avoid multiple verbs in names due to private implementations.'
+    - path: "**/*.cpp"
+      instructions: |
+        'This coding style is based on the Emacs style. These instructions are very important, make sure the code follows them closely:
+        - Accepted initialisms/abbreviations are allowed. For initialisms in names, capitalize only the first letter.
+        - Abbreviations are more acceptable for local/private variables than public APIs.
+        - Abbreviate individual words if >8 chars and can be shortened by 50%+.
+        - Single line comments use "//". Multi-line use /…/.
+        - Public functions need \brief, \param, and history.'
+    - path: "**/*.cpp"
+      instructions: |
+        'This coding style is based on the Emacs style. These instructions are very important, make sure the code follows them closely:
+        - No nested ternaries, gotos, or commented-out code in reviews.
+        - If overriding destructor, copy constructor or assignment operator, do all 3.
+        - Loops need a non-break terminating condition.
+        - Use nullptr, not NULL/0.
+        - Use QSqlQuery::prepare for SQL.
+        - Use ezcAutoClose for EZC files.
+        - Prefer references to pointers, with exceptions.
+        - Prohibited: exceptions, post-C++03 features without approval, C-style/const_cast, auto, lambdas, pointer arithmetic, standard library if Qt alternative exists, initializer lists, Java-style iterators (use foreach), and range-based for on Qt containers.'
+
+  auto_review:
+    enabled: true
+    auto_incremental_review: true
+    ignore_title_keywords:
+      - "WIP"
+    drafts: false
+    base_branches:
+      - "develop"
+      - "feat/*"
+      - "test"
+  tools:
+    pmd:
+      enabled: true
+      config_file: "pmdRuleset.xml"
+    semgrep:
+      enabled: true
+      config_file: "semgrep.config.yaml"
+    ast-grep:
+      rule_dirs:
+        - "rules"
+        - "test-missing-dir"
+      packages:
+        - "test-peter-rabbit/test-ast-grep-custom-package"
+chat:
+  auto_reply: true
